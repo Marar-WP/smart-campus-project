@@ -13,6 +13,4 @@ This continues the supplied Practice 10 export. One fictional room A101, simulat
 
 Check Availability -> deterministic rule engine -> structured result -> optional Explain availability -> validated mock adapter -> separately labeled explanation. The mock mode selector demonstrates timeout, API failure and missing key. Any changed form field clears the previous result and explanation. A real provider is not configured. If added later, the provider must be on a server and keep its key there.
 
-## Publishing
 
-The old Practice 10 link is https://smart-campus-room-av-k3ca.bolt.host/ and is not evidence of the new feature. Import the updated source into the publishing workspace and publish; no new public URL has been created.
