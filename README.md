@@ -1,6 +1,6 @@
 # Smart Campus Room Availability Checker — Practice 11
 
-This continues the supplied Practice 09 export. One fictional room A101, simulated current time 09:00, existing booking 10:00–11:00. No booking creation, login, database, API calls or real student data. Availability depends exclusively on the unchanged `checkAvailability` function.
+This continues the supplied Practice 10 export. One fictional room A101, simulated current time 09:00, existing booking 10:00–11:00. No booking creation, login, database, API calls or real student data. Availability depends exclusively on the unchanged `checkAvailability` function.
 
 ## Run
 
@@ -15,4 +15,4 @@ Check Availability -> deterministic rule engine -> structured result -> optional
 
 ## Publishing
 
-The old Practice 09 link is https://smart-campus-room-av-k3ca.bolt.host/ and is not evidence of the new feature. Import the updated source into the publishing workspace and publish; no new public URL has been created.
+The old Practice 10 link is https://smart-campus-room-av-k3ca.bolt.host/ and is not evidence of the new feature. Import the updated source into the publishing workspace and publish; no new public URL has been created.
