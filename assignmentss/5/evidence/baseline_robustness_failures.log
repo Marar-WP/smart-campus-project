@@ -1,0 +1,319 @@
+(node:1388) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+TAP version 13
+# Subtest: R01-a NaN
+not ok 1 - R01-a NaN
+  ---
+  duration_ms: 2.715093
+  type: 'test'
+  location: '/mnt/data/Assignment05_SmartCampus/final/tests/robustness.test.mjs:35:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      {
+    +   available: true,
+    +   reason: 'ok'
+    -   available: false,
+    -   reason: 'invalid_interval'
+      }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    available: false
+    reason: 'invalid_interval'
+  actual:
+    available: true
+    reason: 'ok'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/data/Assignment05_SmartCampus/final/tests/robustness.test.mjs:35:28)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: R01-b Infinity
+ok 2 - R01-b Infinity
+  ---
+  duration_ms: 0.202765
+  type: 'test'
+  ...
+# Subtest: R01-c fractional
+not ok 3 - R01-c fractional
+  ---
+  duration_ms: 0.49689
+  type: 'test'
+  location: '/mnt/data/Assignment05_SmartCampus/final/tests/robustness.test.mjs:35:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      {
+    +   available: true,
+    +   reason: 'ok'
+    -   available: false,
+    -   reason: 'invalid_interval'
+      }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    available: false
+    reason: 'invalid_interval'
+  actual:
+    available: true
+    reason: 'ok'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/data/Assignment05_SmartCampus/final/tests/robustness.test.mjs:35:28)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: R01-d negative
+not ok 4 - R01-d negative
+  ---
+  duration_ms: 1.201131
+  type: 'test'
+  location: '/mnt/data/Assignment05_SmartCampus/final/tests/robustness.test.mjs:35:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      {
+    +   available: true,
+    +   reason: 'ok'
+    -   available: false,
+    -   reason: 'invalid_interval'
+      }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    available: false
+    reason: 'invalid_interval'
+  actual:
+    available: true
+    reason: 'ok'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/data/Assignment05_SmartCampus/final/tests/robustness.test.mjs:35:28)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: R01-e beyond day
+ok 5 - R01-e beyond day
+  ---
+  duration_ms: 0.210588
+  type: 'test'
+  ...
+# Subtest: R02-a NaN endpoint
+not ok 6 - R02-a NaN endpoint
+  ---
+  duration_ms: 0.462568
+  type: 'test'
+  location: '/mnt/data/Assignment05_SmartCampus/final/tests/robustness.test.mjs:47:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      {
+    +   available: true,
+    +   reason: 'ok'
+    -   available: false,
+    -   reason: 'invalid_schedule'
+      }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    available: false
+    reason: 'invalid_schedule'
+  actual:
+    available: true
+    reason: 'ok'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/data/Assignment05_SmartCampus/final/tests/robustness.test.mjs:47:28)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: R02-b reversed booking
+not ok 7 - R02-b reversed booking
+  ---
+  duration_ms: 0.262275
+  type: 'test'
+  location: '/mnt/data/Assignment05_SmartCampus/final/tests/robustness.test.mjs:47:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      {
+    +   available: true,
+    +   reason: 'ok'
+    -   available: false,
+    -   reason: 'invalid_schedule'
+      }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    available: false
+    reason: 'invalid_schedule'
+  actual:
+    available: true
+    reason: 'ok'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/data/Assignment05_SmartCampus/final/tests/robustness.test.mjs:47:28)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: R02-c invalid midnight bound
+not ok 8 - R02-c invalid midnight bound
+  ---
+  duration_ms: 0.127542
+  type: 'test'
+  location: '/mnt/data/Assignment05_SmartCampus/final/tests/robustness.test.mjs:47:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      {
+        available: false,
+    +   reason: 'overlap'
+    -   reason: 'invalid_schedule'
+      }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    available: false
+    reason: 'invalid_schedule'
+  actual:
+    available: false
+    reason: 'overlap'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/data/Assignment05_SmartCampus/final/tests/robustness.test.mjs:47:28)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: R02-d null record
+not ok 9 - R02-d null record
+  ---
+  duration_ms: 0.334775
+  type: 'test'
+  location: '/mnt/data/Assignment05_SmartCampus/final/tests/robustness.test.mjs:47:3'
+  failureType: 'testCodeFailure'
+  error: "Cannot read properties of null (reading 'end')"
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    overlaps (file:///mnt/data/Assignment05_SmartCampus/baseline/src/utils/availability.ts:30:26)
+    file:///mnt/data/Assignment05_SmartCampus/baseline/src/utils/availability.ts:34:31
+    Array.some (<anonymous>)
+    overlapsExisting (file:///mnt/data/Assignment05_SmartCampus/baseline/src/utils/availability.ts:34:19)
+    checkAvailability (file:///mnt/data/Assignment05_SmartCampus/baseline/src/utils/availability.ts:62:7)
+    check (file:///mnt/data/Assignment05_SmartCampus/final/tests/robustness.test.mjs:25:33)
+    TestContext.<anonymous> (file:///mnt/data/Assignment05_SmartCampus/final/tests/robustness.test.mjs:47:38)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+  ...
+# Subtest: R02-e nonarray schedule
+not ok 10 - R02-e nonarray schedule
+  ---
+  duration_ms: 0.355406
+  type: 'test'
+  location: '/mnt/data/Assignment05_SmartCampus/final/tests/robustness.test.mjs:47:3'
+  failureType: 'testCodeFailure'
+  error: "Cannot read properties of null (reading 'some')"
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    overlapsExisting (file:///mnt/data/Assignment05_SmartCampus/baseline/src/utils/availability.ts:34:19)
+    checkAvailability (file:///mnt/data/Assignment05_SmartCampus/baseline/src/utils/availability.ts:62:7)
+    check (file:///mnt/data/Assignment05_SmartCampus/final/tests/robustness.test.mjs:25:33)
+    TestContext.<anonymous> (file:///mnt/data/Assignment05_SmartCampus/final/tests/robustness.test.mjs:47:38)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: R02-f valid schedule still permits boundary touching
+ok 11 - R02-f valid schedule still permits boundary touching
+  ---
+  duration_ms: 0.349988
+  type: 'test'
+  ...
+# Subtest: R02-g invalid schedule does not mutate input
+ok 12 - R02-g invalid schedule does not mutate input
+  ---
+  duration_ms: 0.201584
+  type: 'test'
+  ...
+# Subtest: R02-h invalid schedule explanation is unavailable and consistent
+not ok 13 - R02-h invalid schedule explanation is unavailable and consistent
+  ---
+  duration_ms: 0.393023
+  type: 'test'
+  location: '/mnt/data/Assignment05_SmartCampus/final/tests/robustness.test.mjs:62:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/data/Assignment05_SmartCampus/final/tests/robustness.test.mjs:64:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 4
+# fail 9
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 21.128557

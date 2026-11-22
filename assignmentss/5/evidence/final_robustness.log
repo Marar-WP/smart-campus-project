@@ -1,0 +1,84 @@
+(node:845) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+TAP version 13
+# Subtest: R01-a NaN
+ok 1 - R01-a NaN
+  ---
+  duration_ms: 1.287042
+  type: 'test'
+  ...
+# Subtest: R01-b Infinity
+ok 2 - R01-b Infinity
+  ---
+  duration_ms: 0.09965
+  type: 'test'
+  ...
+# Subtest: R01-c fractional
+ok 3 - R01-c fractional
+  ---
+  duration_ms: 0.074913
+  type: 'test'
+  ...
+# Subtest: R01-d negative
+ok 4 - R01-d negative
+  ---
+  duration_ms: 0.066681
+  type: 'test'
+  ...
+# Subtest: R01-e beyond day
+ok 5 - R01-e beyond day
+  ---
+  duration_ms: 0.16622
+  type: 'test'
+  ...
+# Subtest: R02-a NaN endpoint
+ok 6 - R02-a NaN endpoint
+  ---
+  duration_ms: 0.251569
+  type: 'test'
+  ...
+# Subtest: R02-b reversed booking
+ok 7 - R02-b reversed booking
+  ---
+  duration_ms: 0.111358
+  type: 'test'
+  ...
+# Subtest: R02-c invalid midnight bound
+ok 8 - R02-c invalid midnight bound
+  ---
+  duration_ms: 0.0728
+  type: 'test'
+  ...
+# Subtest: R02-d null record
+ok 9 - R02-d null record
+  ---
+  duration_ms: 0.236036
+  type: 'test'
+  ...
+# Subtest: R02-e nonarray schedule
+ok 10 - R02-e nonarray schedule
+  ---
+  duration_ms: 0.374284
+  type: 'test'
+  ...
+# Subtest: R02-f valid schedule still permits boundary touching
+ok 11 - R02-f valid schedule still permits boundary touching
+  ---
+  duration_ms: 0.197007
+  type: 'test'
+  ...
+# Subtest: R02-g invalid schedule does not mutate input
+ok 12 - R02-g invalid schedule does not mutate input
+  ---
+  duration_ms: 0.162344
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 15.474295
