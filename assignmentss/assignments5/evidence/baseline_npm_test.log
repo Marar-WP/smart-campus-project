@@ -1,0 +1,245 @@
+
+> vite-react-typescript-starter@0.0.0 test
+> node --experimental-strip-types tests/availability.test.mjs && node --experimental-strip-types tests/explanation.test.mjs
+
+(node:650) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+TAP version 13
+# Subtest: T01: a free interval is available (AC5)
+ok 1 - T01: a free interval is available (AC5)
+  ---
+  duration_ms: 1.977308
+  type: 'test'
+  ...
+# Subtest: T02: start at or after end is rejected (AC1)
+ok 2 - T02: start at or after end is rejected (AC1)
+  ---
+  duration_ms: 0.171963
+  type: 'test'
+  ...
+# Subtest: T03: past and current-time starts are rejected (AC1)
+ok 3 - T03: past and current-time starts are rejected (AC1)
+  ---
+  duration_ms: 0.236539
+  type: 'test'
+  ...
+# Subtest: T04: intervals longer than 120 minutes are rejected (AC2)
+ok 4 - T04: intervals longer than 120 minutes are rejected (AC2)
+  ---
+  duration_ms: 0.152705
+  type: 'test'
+  ...
+# Subtest: T05: blocked rooms are rejected (AC3)
+ok 5 - T05: blocked rooms are rejected (AC3)
+  ---
+  duration_ms: 0.275697
+  type: 'test'
+  ...
+# Subtest: T06: an actual overlap is rejected (AC4)
+ok 6 - T06: an actual overlap is rejected (AC4)
+  ---
+  duration_ms: 1.553241
+  type: 'test'
+  ...
+# Subtest: T07: touching the booking start is allowed (BUG-A / AC4)
+ok 7 - T07: touching the booking start is allowed (BUG-A / AC4)
+  ---
+  duration_ms: 0.114078
+  type: 'test'
+  ...
+# Subtest: T08: touching the booking end is allowed (BUG-A / AC4)
+ok 8 - T08: touching the booking end is allowed (BUG-A / AC4)
+  ---
+  duration_ms: 0.081441
+  type: 'test'
+  ...
+# Subtest: T09: checking availability never mutates bookings (BUG-B / AC5)
+ok 9 - T09: checking availability never mutates bookings (BUG-B / AC5)
+  ---
+  duration_ms: 0.728285
+  type: 'test'
+  ...
+# Subtest: T10: minutes outside the day are rejected (AC1)
+ok 10 - T10: minutes outside the day are rejected (AC1)
+  ---
+  duration_ms: 0.619174
+  type: 'test'
+  ...
+# Subtest: T11: exactly 120 minutes is allowed (AC2)
+ok 11 - T11: exactly 120 minutes is allowed (AC2)
+  ---
+  duration_ms: 0.263389
+  type: 'test'
+  ...
+# Subtest: T12: fractional minutes are rejected explicitly (AC1)
+ok 12 - T12: fractional minutes are rejected explicitly (AC1)
+  ---
+  duration_ms: 0.148479
+  type: 'test'
+  ...
+# Subtest: T13: non-finite inputs are rejected explicitly (AC1)
+ok 13 - T13: non-finite inputs are rejected explicitly (AC1)
+  ---
+  duration_ms: 0.16272
+  type: 'test'
+  ...
+# Subtest: T14: the final minute of the day is a valid free interval (AC1)
+ok 14 - T14: the final minute of the day is a valid free interval (AC1)
+  ---
+  duration_ms: 0.126997
+  type: 'test'
+  ...
+# Subtest: T15: overlapping by just one minute is rejected (AC4)
+ok 15 - T15: overlapping by just one minute is rejected (AC4)
+  ---
+  duration_ms: 0.072918
+  type: 'test'
+  ...
+# Subtest: T16: shared room fixture remains unchanged after checking (AC5)
+ok 16 - T16: shared room fixture remains unchanged after checking (AC5)
+  ---
+  duration_ms: 0.090643
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 22.080602
+(node:661) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+TAP version 13
+# Subtest: E01 available
+ok 1 - E01 available
+  ---
+  duration_ms: 2.288266
+  type: 'test'
+  ...
+# Subtest: E02 overlap
+ok 2 - E02 overlap
+  ---
+  duration_ms: 0.230259
+  type: 'test'
+  ...
+# Subtest: E03 blocked
+ok 3 - E03 blocked
+  ---
+  duration_ms: 1.306498
+  type: 'test'
+  ...
+# Subtest: E04 reversed interval
+ok 4 - E04 reversed interval
+  ---
+  duration_ms: 0.149471
+  type: 'test'
+  ...
+# Subtest: E05 past time
+ok 5 - E05 past time
+  ---
+  duration_ms: 0.21684
+  type: 'test'
+  ...
+# Subtest: E06 excessive duration
+ok 6 - E06 excessive duration
+  ---
+  duration_ms: 0.11534
+  type: 'test'
+  ...
+# Subtest: E07 empty
+ok 7 - E07 empty
+  ---
+  duration_ms: 0.25757
+  type: 'test'
+  ...
+# Subtest: E08 long input
+ok 8 - E08 long input
+  ---
+  duration_ms: 0.09441
+  type: 'test'
+  ...
+# Subtest: E09 malformed
+ok 9 - E09 malformed
+  ---
+  duration_ms: 0.341304
+  type: 'test'
+  ...
+# Subtest: E10 contradictory input
+ok 10 - E10 contradictory input
+  ---
+  duration_ms: 0.402113
+  type: 'test'
+  ...
+# Subtest: E11 injection
+ok 11 - E11 injection
+  ---
+  duration_ms: 0.145254
+  type: 'test'
+  ...
+# Subtest: E12 timeout
+ok 12 - E12 timeout
+  ---
+  duration_ms: 19.832015
+  type: 'test'
+  ...
+# Subtest: E13 API failure
+ok 13 - E13 API failure
+  ---
+  duration_ms: 0.166306
+  type: 'test'
+  ...
+# Subtest: E14 missing key
+ok 14 - E14 missing key
+  ---
+  duration_ms: 0.337619
+  type: 'test'
+  ...
+# Subtest: E15 malformed response
+ok 15 - E15 malformed response
+  ---
+  duration_ms: 0.162159
+  type: 'test'
+  ...
+# Subtest: E16 long response
+ok 16 - E16 long response
+  ---
+  duration_ms: 0.140427
+  type: 'test'
+  ...
+# Subtest: E17 contradictory response
+ok 17 - E17 contradictory response
+  ---
+  duration_ms: 0.062001
+  type: 'test'
+  ...
+# Subtest: E18 invented booking details
+ok 18 - E18 invented booking details
+  ---
+  duration_ms: 0.055682
+  type: 'test'
+  ...
+# Subtest: E19 extra field
+ok 19 - E19 extra field
+  ---
+  duration_ms: 0.045867
+  type: 'test'
+  ...
+# Subtest: E20 fixed schema accepts valid context
+ok 20 - E20 fixed schema accepts valid context
+  ---
+  duration_ms: 0.088952
+  type: 'test'
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 20
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 33.914565
+exit=0
