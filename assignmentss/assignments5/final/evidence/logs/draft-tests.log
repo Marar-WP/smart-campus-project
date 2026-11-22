@@ -1,0 +1,164 @@
+(node:704) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+TAP version 13
+# Subtest: E01 available
+ok 1 - E01 available
+  ---
+  duration_ms: 3.646389
+  type: 'test'
+  ...
+# Subtest: E02 overlap
+ok 2 - E02 overlap
+  ---
+  duration_ms: 0.194258
+  type: 'test'
+  ...
+# Subtest: E03 blocked
+ok 3 - E03 blocked
+  ---
+  duration_ms: 2.032386
+  type: 'test'
+  ...
+# Subtest: E04 reversed interval
+ok 4 - E04 reversed interval
+  ---
+  duration_ms: 0.145741
+  type: 'test'
+  ...
+# Subtest: E05 past time
+ok 5 - E05 past time
+  ---
+  duration_ms: 0.454213
+  type: 'test'
+  ...
+# Subtest: E06 excessive duration
+ok 6 - E06 excessive duration
+  ---
+  duration_ms: 0.943761
+  type: 'test'
+  ...
+# Subtest: E07 empty
+ok 7 - E07 empty
+  ---
+  duration_ms: 0.570037
+  type: 'test'
+  ...
+# Subtest: E08 long input
+ok 8 - E08 long input
+  ---
+  duration_ms: 0.085141
+  type: 'test'
+  ...
+# Subtest: E09 malformed
+ok 9 - E09 malformed
+  ---
+  duration_ms: 0.808385
+  type: 'test'
+  ...
+# Subtest: E10 contradictory input
+ok 10 - E10 contradictory input
+  ---
+  duration_ms: 0.680762
+  type: 'test'
+  ...
+# Subtest: E11 injection
+ok 11 - E11 injection
+  ---
+  duration_ms: 0.331738
+  type: 'test'
+  ...
+# Subtest: E12 timeout
+ok 12 - E12 timeout
+  ---
+  duration_ms: 20.553843
+  type: 'test'
+  ...
+# Subtest: E13 API failure
+ok 13 - E13 API failure
+  ---
+  duration_ms: 0.79632
+  type: 'test'
+  ...
+# Subtest: E14 missing key
+ok 14 - E14 missing key
+  ---
+  duration_ms: 0.280422
+  type: 'test'
+  ...
+# Subtest: E15 malformed response
+ok 15 - E15 malformed response
+  ---
+  duration_ms: 0.18184
+  type: 'test'
+  ...
+# Subtest: E16 long response
+ok 16 - E16 long response
+  ---
+  duration_ms: 0.060011
+  type: 'test'
+  ...
+# Subtest: E17 contradictory response
+not ok 17 - E17 contradictory response
+  ---
+  duration_ms: 2.010939
+  type: 'test'
+  location: '/mnt/data/work11/project/tests/explanation.test.mjs:32:359'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    'mock' !== 'fallback'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'fallback'
+  actual: 'mock'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/data/work11/project/tests/explanation.test.mjs:33:66)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: E18 invented booking details
+not ok 18 - E18 invented booking details
+  ---
+  duration_ms: 0.370475
+  type: 'test'
+  location: '/mnt/data/work11/project/tests/explanation.test.mjs:32:359'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    'mock' !== 'fallback'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'fallback'
+  actual: 'mock'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///mnt/data/work11/project/tests/explanation.test.mjs:33:66)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: E19 extra field
+ok 19 - E19 extra field
+  ---
+  duration_ms: 0.242174
+  type: 'test'
+  ...
+# Subtest: E20 fixed schema accepts valid context
+ok 20 - E20 fixed schema accepts valid context
+  ---
+  duration_ms: 0.070498
+  type: 'test'
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 18
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 46.440127
