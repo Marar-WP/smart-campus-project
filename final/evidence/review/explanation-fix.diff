@@ -1,0 +1,20 @@
+--- ../draft/explanation.ts	2026-11-19 08:31:02.088092733 +0000
++++ src/utils/explanation.ts	2026-11-19 08:31:57.220659233 +0000
+@@ -23,7 +23,7 @@
+   return !!input && input.roomLabel === 'A101' &&
+     typeof input.startTime === 'string' && input.startTime.length === 5 && timePattern.test(input.startTime) &&
+     typeof input.endTime === 'string' && input.endTime.length === 5 && timePattern.test(input.endTime) &&
+-    typeof input.isAvailable === 'boolean' && Object.hasOwn(REASONS, input.reasonCode) &&
++    typeof input.isAvailable === 'boolean' && Object.prototype.hasOwnProperty.call(REASONS, input.reasonCode) &&
+     input.isAvailable === (input.reasonCode === 'ok');
+ }
+ export function mockAdapter(mode: MockMode = 'normal'): Adapter {
+@@ -36,7 +36,7 @@
+ function validOutput(value: unknown, input: ExplanationInput): value is { explanation: string } {
+   if (!value || typeof value !== 'object' || Object.keys(value).length !== 1 || !('explanation' in value)) return false;
+   const text = value.explanation;
+-  return typeof text === 'string' && text.length > 0 && text.length <= 180;
++  return typeof text === 'string' && text.length > 0 && text.length <= 180 && text === REASONS[input.reasonCode];
+ }
+ export async function explainAvailability(input: ExplanationInput, adapter: Adapter = mockAdapter(), timeoutMs = 350): Promise<ExplanationResult> {
+   if (!validInput(input)) return { explanation: 'Explanation input is invalid. Check the selected times.', source: 'rejected' };
