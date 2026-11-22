@@ -1,0 +1,272 @@
+import { useMemo, useState } from "react";
+import {
+  CheckCircle2,
+  XCircle,
+  Clock,
+  CalendarDays,
+  Lock,
+  LockOpen,
+  Building2,
+} from "lucide-react";
+import { minutesToTime, timeToMinutes } from "@/utils/time";
+import { checkAvailability, overlaps, REASON_LABELS, type CheckResult } from "@/utils/availability";
+import { explainAvailability, mockAdapter, type ExplanationInput, type ExplanationResult, type MockMode } from "@/utils/explanation";
+import { DEMO_ROOM } from "@/data/roomFixture";
+
+export default function App() {
+  const [currentTime, setCurrentTime] = useState<number>(DEMO_ROOM.currentTime);
+  const [blocked, setBlocked] = useState(false);
+  const bookings = DEMO_ROOM.bookings;
+
+  const [startTime, setStartTime] = useState("10:30");
+  const [endTime, setEndTime] = useState("11:30");
+  const [result, setResult] = useState<CheckResult | null>(null);
+  const [checkId, setCheckId] = useState(0);
+
+  const currentEdit = minutesToTime(currentTime);
+
+  const handleCurrentChange = (value: string) => {
+    const min = timeToMinutes(value);
+    if (min !== null) { setCurrentTime(min); setResult(null); }
+  };
+
+  const handleCheck = () => {
+    setCheckId((id) => id + 1);
+    const start = timeToMinutes(startTime);
+    const end = timeToMinutes(endTime);
+    if (start === null || end === null) {
+      setResult({ available: false, reason: "invalid_interval" });
+      return;
+    }
+    setResult(
+      checkAvailability({ start, end, currentTime, blocked, bookings })
+    );
+  };
+
+  const overlapDetail = useMemo(() => {
+    if (!result || result.reason !== "overlap") return null;
+    const start = timeToMinutes(startTime);
+    const end = timeToMinutes(endTime);
+    if (start === null || end === null) return null;
+    return bookings
+      .filter((b) => overlaps(start, end, b))
+      .map((b) => `${minutesToTime(b.start)}–${minutesToTime(b.end)}`)
+      .join(", ");
+  }, [result, bookings, startTime, endTime]);
+
+  return (
+    <div className="min-h-screen bg-slate-50 text-slate-900 antialiased">
+      <div className="mx-auto max-w-2xl px-4 py-8 sm:py-12">
+        {/* Header */}
+        <header className="mb-8 flex items-center gap-3">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-600 text-white shadow-sm">
+            <Building2 className="h-6 w-6" />
+          </div>
+          <div>
+            <h1 className="text-xl font-semibold tracking-tight sm:text-2xl">
+              Smart Campus Room Availability Checker
+            </h1>
+            <p className="text-sm text-slate-500">
+              Demo only — fictional room data; no bookings are created.
+            </p>
+          </div>
+        </header>
+
+        {/* Room card */}
+        <section className="mb-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 text-slate-700">
+                <CalendarDays className="h-5 w-5" />
+              </div>
+              <div>
+                <p className="text-xs font-medium uppercase tracking-wide text-slate-400">
+                  Selected Room
+                </p>
+                <p className="text-lg font-semibold">{DEMO_ROOM.name}</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2 rounded-lg bg-slate-100 px-3 py-2 text-sm">
+              <Clock className="h-4 w-4 text-slate-500" />
+              <span className="text-slate-500">Current time:</span>
+              <input
+                type="time"
+                value={currentEdit}
+                onChange={(e) => handleCurrentChange(e.target.value)}
+                className="bg-transparent font-medium text-slate-900 outline-none"
+                aria-label="Current time"
+              />
+              <span className="text-xs text-slate-400">({currentTime} min)</span>
+            </div>
+          </div>
+
+          {/* Blocked toggle */}
+          <label className="mt-5 flex cursor-pointer items-center gap-3 rounded-xl border border-slate-200 px-4 py-3 transition-colors hover:bg-slate-50">
+            <span className="flex items-center gap-2 text-sm font-medium text-slate-700">
+              {blocked ? (
+                <Lock className="h-4 w-4 text-red-500" />
+              ) : (
+                <LockOpen className="h-4 w-4 text-green-600" />
+              )}
+              Room blocked
+            </span>
+            <div className="relative ml-auto h-6 w-11">
+              <input
+                type="checkbox"
+                checked={blocked}
+                onChange={(e) => { setBlocked(e.target.checked); setResult(null); }}
+                className="peer sr-only"
+                aria-label="Toggle room blocked"
+              />
+              <span className="block h-6 w-11 rounded-full bg-slate-300 transition-colors peer-checked:bg-red-500" />
+              <span className="absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white shadow transition-transform peer-checked:translate-x-5" />
+            </div>
+          </label>
+
+          {/* Existing bookings */}
+          <div className="mt-5">
+            <p className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-400">
+              Existing Bookings
+            </p>
+            <ul className="flex flex-col gap-2">
+              {bookings.map((b, i) => (
+                <li
+                  key={i}
+                  className="flex items-center gap-2 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-900"
+                >
+                  <span className="h-2 w-2 rounded-full bg-amber-400" />
+                  {minutesToTime(b.start)} – {minutesToTime(b.end)}
+                  <span className="ml-auto text-xs text-amber-600">
+                    {b.end - b.start} min
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* Check form */}
+        <section className="mb-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-slate-500">
+            Check a Time Slot
+          </h2>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+              <label
+                htmlFor="start-time"
+                className="mb-1.5 block text-sm font-medium text-slate-700"
+              >
+                Start time
+              </label>
+              <input
+                id="start-time"
+                type="time"
+                value={startTime}
+                onChange={(e) => { setStartTime(e.target.value); setResult(null); }}
+                className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm outline-none transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="end-time"
+                className="mb-1.5 block text-sm font-medium text-slate-700"
+              >
+                End time
+              </label>
+              <input
+                id="end-time"
+                type="time"
+                value={endTime}
+                onChange={(e) => { setEndTime(e.target.value); setResult(null); }}
+                className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm outline-none transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+              />
+            </div>
+          </div>
+
+          <button
+            onClick={handleCheck}
+            className="mt-5 w-full rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700 active:bg-blue-800"
+          >
+            Check Availability
+          </button>
+        </section>
+
+        {/* Result */}
+        {result && <>
+          <ResultBanner result={result} overlapDetail={overlapDetail} />
+          <ExplanationPanel key={checkId} input={{ roomLabel: DEMO_ROOM.name, startTime, endTime,
+            isAvailable: result.available, reasonCode: result.reason }} />
+        </>}
+      </div>
+    </div>
+  );
+}
+
+function ResultBanner({
+  result,
+  overlapDetail,
+}: {
+  result: CheckResult;
+  overlapDetail: string | null;
+}) {
+  if (result.available) {
+    return (
+      <div className="flex items-start gap-3 rounded-2xl border border-green-200 bg-green-50 p-5 text-green-800 shadow-sm">
+        <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-green-600" />
+        <div>
+          <p className="text-base font-semibold">Available</p>
+          <p className="mt-0.5 text-sm text-green-700">
+            {REASON_LABELS[result.reason]}
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex items-start gap-3 rounded-2xl border border-red-200 bg-red-50 p-5 text-red-800 shadow-sm">
+      <XCircle className="mt-0.5 h-6 w-6 flex-shrink-0 text-red-600" />
+      <div>
+        <p className="text-base font-semibold">Unavailable</p>
+        <p className="mt-0.5 text-sm text-red-700">
+          {REASON_LABELS[result.reason]}
+          {overlapDetail && (
+            <>
+              {" "}
+              Conflicts with: <span className="font-medium">{overlapDetail}</span>.
+            </>
+          )}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function ExplanationPanel({ input }: { input: ExplanationInput }) {
+  const [mode, setMode] = useState<MockMode>('normal');
+  const [response, setResponse] = useState<ExplanationResult | null>(null);
+  const [loading, setLoading] = useState(false);
+  const handleExplain = async () => {
+    setLoading(true);
+    setResponse(null);
+    const output = await explainAvailability(input, mockAdapter(mode));
+    setResponse(output);
+    setLoading(false);
+  };
+  return (
+    <section className="mt-5 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" aria-label="Optional explanation">
+      <p className="text-sm font-semibold text-slate-700">Optional explanation (mock AI)</p>
+      <p className="mt-0.5 text-sm text-slate-500">The availability result above is final. No booking is created.</p>
+      <label className="mt-5 block text-sm text-slate-700" htmlFor="mock-mode">Mock test mode</label>
+      <select id="mock-mode" value={mode} disabled={loading} onChange={(e) => { setMode(e.target.value as MockMode); setResponse(null); }} className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm">
+        <option value="normal">Normal</option><option value="timeout">Simulated timeout</option><option value="error">Simulated API failure</option><option value="unavailable">Simulated missing key</option>
+      </select>
+      <button onClick={handleExplain} disabled={loading} className="mt-5 w-full rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-700" style={{opacity: loading ? 0.6 : 1}}>{loading ? 'Explaining...' : 'Explain availability'}</button>
+      {response && <div className="mt-5 rounded-lg bg-slate-100 px-3 py-2 text-sm" role="status">
+        <p className="font-semibold">{response.source === 'mock' ? 'Generated explanation (mock)' : response.source === 'fallback' ? 'Deterministic fallback (mock unavailable)' : 'Explanation rejected'}</p>
+        <p>{response.explanation}</p>
+      </div>}
+    </section>
+  );
+}

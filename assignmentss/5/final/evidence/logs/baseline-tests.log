@@ -1,0 +1,108 @@
+(node:522) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+TAP version 13
+# Subtest: T01: a free interval is available (AC5)
+ok 1 - T01: a free interval is available (AC5)
+  ---
+  duration_ms: 2.011601
+  type: 'test'
+  ...
+# Subtest: T02: start at or after end is rejected (AC1)
+ok 2 - T02: start at or after end is rejected (AC1)
+  ---
+  duration_ms: 0.203081
+  type: 'test'
+  ...
+# Subtest: T03: past and current-time starts are rejected (AC1)
+ok 3 - T03: past and current-time starts are rejected (AC1)
+  ---
+  duration_ms: 0.204714
+  type: 'test'
+  ...
+# Subtest: T04: intervals longer than 120 minutes are rejected (AC2)
+ok 4 - T04: intervals longer than 120 minutes are rejected (AC2)
+  ---
+  duration_ms: 0.157723
+  type: 'test'
+  ...
+# Subtest: T05: blocked rooms are rejected (AC3)
+ok 5 - T05: blocked rooms are rejected (AC3)
+  ---
+  duration_ms: 0.156655
+  type: 'test'
+  ...
+# Subtest: T06: an actual overlap is rejected (AC4)
+ok 6 - T06: an actual overlap is rejected (AC4)
+  ---
+  duration_ms: 0.115917
+  type: 'test'
+  ...
+# Subtest: T07: touching the booking start is allowed (BUG-A / AC4)
+ok 7 - T07: touching the booking start is allowed (BUG-A / AC4)
+  ---
+  duration_ms: 0.123843
+  type: 'test'
+  ...
+# Subtest: T08: touching the booking end is allowed (BUG-A / AC4)
+ok 8 - T08: touching the booking end is allowed (BUG-A / AC4)
+  ---
+  duration_ms: 1.812514
+  type: 'test'
+  ...
+# Subtest: T09: checking availability never mutates bookings (BUG-B / AC5)
+ok 9 - T09: checking availability never mutates bookings (BUG-B / AC5)
+  ---
+  duration_ms: 0.763005
+  type: 'test'
+  ...
+# Subtest: T10: minutes outside the day are rejected (AC1)
+ok 10 - T10: minutes outside the day are rejected (AC1)
+  ---
+  duration_ms: 0.378638
+  type: 'test'
+  ...
+# Subtest: T11: exactly 120 minutes is allowed (AC2)
+ok 11 - T11: exactly 120 minutes is allowed (AC2)
+  ---
+  duration_ms: 0.164685
+  type: 'test'
+  ...
+# Subtest: T12: fractional minutes are rejected explicitly (AC1)
+ok 12 - T12: fractional minutes are rejected explicitly (AC1)
+  ---
+  duration_ms: 0.096183
+  type: 'test'
+  ...
+# Subtest: T13: non-finite inputs are rejected explicitly (AC1)
+ok 13 - T13: non-finite inputs are rejected explicitly (AC1)
+  ---
+  duration_ms: 0.064865
+  type: 'test'
+  ...
+# Subtest: T14: the final minute of the day is a valid free interval (AC1)
+ok 14 - T14: the final minute of the day is a valid free interval (AC1)
+  ---
+  duration_ms: 0.046489
+  type: 'test'
+  ...
+# Subtest: T15: overlapping by just one minute is rejected (AC4)
+ok 15 - T15: overlapping by just one minute is rejected (AC4)
+  ---
+  duration_ms: 0.044947
+  type: 'test'
+  ...
+# Subtest: T16: shared room fixture remains unchanged after checking (AC5)
+ok 16 - T16: shared room fixture remains unchanged after checking (AC5)
+  ---
+  duration_ms: 0.085905
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 23.041048
